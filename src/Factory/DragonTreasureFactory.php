@@ -49,12 +49,12 @@ final class DragonTreasureFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'coolFactor' => self::faker()->randomNumber(),
-            'description' => self::faker()->text(),
+            'coolFactor' => self::faker()->numberBetween(1, 10),
+            'description' => self::faker()->paragraph(),
             'isPublished' => self::faker()->boolean(),
             'name' => self::faker()->randomElement(self::TREASURE_NAMES),
             'plunderedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'value' => self::faker()->randomNumber(),
+            'value' => self::faker()->numberBetween(1000, 1000000),
         ];
     }
 
