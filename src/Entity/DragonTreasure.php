@@ -31,13 +31,20 @@ use function Symfony\Component\String\u;
         new Put(),
         new Patch(),
     ],
+    formats: [
+        'jsonld',
+        'json',
+        'html',
+        'jsonhal',
+        'csv' => 'text/csv',
+    ],
     normalizationContext: [
         'groups' => ['treasure:read']
     ],
     denormalizationContext: [
         'groups' => ['treasure:write']
     ],
-    paginationItemsPerPage: 10,
+    paginationItemsPerPage: 10
 )]
 #[ApiFilter(PropertyFilter::class)]
 class DragonTreasure
