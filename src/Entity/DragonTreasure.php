@@ -30,7 +30,8 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
     ],
     denormalizationContext: [
         'groups' => ['treasure:write']
-    ]
+    ],
+    paginationItemsPerPage: 10,
 )]
 class DragonTreasure
 {
@@ -84,13 +85,13 @@ class DragonTreasure
 
     public function setDescription(string $description): static
     {
-        $this->$description = $description;
+        $this->description = $description;
 
         return $this;
     }
 
-    #[Groups('treasure:write')]
     #[SerializedName('description')]
+    #[Groups('treasure:write')]
     public function setTextDescription(string $description): static
     {
         $this->description = nl2br($description);
