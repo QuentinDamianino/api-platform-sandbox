@@ -50,6 +50,7 @@ use function Symfony\Component\String\u;
     paginationItemsPerPage: 10
 )]
 #[ApiFilter(PropertyFilter::class)]
+#[ApiFilter(SearchFilter::class, properties: ['owner.username' => 'partial'])]
 class DragonTreasure
 {
     #[ORM\Id]
@@ -93,6 +94,7 @@ class DragonTreasure
     #[ORM\ManyToOne(inversedBy: 'dragonTreasures')]
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\Valid]
+    #[ApiFilter(SearchFilter::class, strategy: 'exact')]
     private ?User $owner = null;
 
     public function __construct(string $name = null)
